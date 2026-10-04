@@ -1108,4 +1108,29 @@
     <string name="donationCampaign.paragraph3">Regardless, Mihon will continue to be maintained by me and the volunteers, and it will stay open source.</string>
     <string name="donationCampaign.contactPlatform">Discord</string>
     <string name="donationCampaign.dismiss">Dismiss</string>
+
+    <!-- Cloud / Account strings -->
+    <string name="label_cloud_account">Cloud Account</string>
+    <string name="label_paihon_cloud">Paihon Cloud</string>
+    <string name="user_not_signed_in">User not signed in</string>
+    <string name="user_signed_in">User Signed In</string>
+    <string name="cloud_account_signed_in_as">Signed in as %1$s</string>
+    <string name="cloud_account_sign_in_google">Sign in with Google</string>
+    <string name="cloud_account_sign_in_summary">Sign in to sync your account</string>
+    <string name="cloud_account_sign_out_confirm">Are you sure you want to sign out?</string>
+    <string name="cloud_account_sign_in_success">Signed in successfully</string>
+    <string name="cloud_account_sign_in_cancelled">Sign in was cancelled</string>
+    <string name="cloud_account_sign_in_error">Sign in failed: %1$s</string>
+    <string name="cloud_account_sign_out_success">Signed out</string>
+    <string name="action_upload_library">Upload Library</string>
+    <string name="action_download_library">Download Library</string>
+    <string name="cloud_feature_not_implemented">Cloud sync will be available in Phase 2</string>
+    <string name="cloud_download_not_implemented">Download Library will be available in Phase 4</string>
+    <string name="cloud_upload_sign_in_required">Please sign in to upload your library</string>
+    <string name="cloud_upload_library_empty">Your library is empty</string>
+    <string name="cloud_uploading_library">Uploading library (%1$d / %2$d)…</string>
+    <string name="cloud_upload_success">Library uploaded successfully — %1$d manga</string>
+    <string name="cloud_upload_error">Failed to upload library: %1$s</string>
+    <string name="crop_avatar_title">Crop Avatar</string>
+    <string name="crop_avatar_instructions">Pinch to zoom and drag to adjust position</string>
 </resources>

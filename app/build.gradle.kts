@@ -20,11 +20,11 @@ plugins {
     alias(libs.plugins.androidx.baselineProfile)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.apollo)
+    alias(libs.plugins.google.services)
 }
 
 if (Config.includeTelemetry) {
     pluginManager.apply {
-        apply(libs.plugins.google.services.get().pluginId)
         apply(libs.plugins.firebase.crashlytics.get().pluginId)
     }
 }
@@ -218,6 +218,14 @@ dependencies {
     implementation(projects.presentationCore)
     implementation(projects.presentationWidget)
     implementation(projects.telemetry)
+
+    // Firebase & Auth
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.playServicesAuth)
+    implementation(libs.google.identity.googleid)
 
     // Compose
     implementation(libs.androidx.activity.compose)

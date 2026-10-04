@@ -25,6 +25,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -99,12 +100,78 @@ object SettingsDataScreen : SearchableSettings {
         val storagePreferences = remember { context.appGraph.storagePreferences }
 
         return listOf(
+            getCloudAccountGroup(),
             getStorageLocationPref(storagePreferences = storagePreferences),
             Preference.PreferenceItem.InfoPreference(stringResource(MR.strings.pref_storage_location_info)),
 
             getBackupAndRestoreGroup(backupPreferences = backupPreferences),
             getDataGroup(),
             getExportGroup(),
+        )
+    }
+
+    @Composable
+    private fun getCloudAccountGroup(): Preference.PreferenceGroup {
+        val navigator = LocalNavigator.currentOrThrow
+        val context = LocalContext.current
+        val scope = rememberCoroutineScope()
+        val authManager = remember { context.appGraph.firebaseAuthManager }
+        val authUser by authManager.authState.collectAsState()
+        var showSignOutDialog by remember { mutableStateOf(false) }
+
+        if (showSignOutDialog) {
+            AlertDialog(
+                onDismissRequest = { showSignOutDialog = false },
+                title = { Text(text = stringResource(MR.strings.label_cloud_account)) },
+                text = { Text(text = stringResource(MR.strings.cloud_account_sign_out_confirm)) },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            showSignOutDialog = false
+                            scope.launch {
+                                authManager.signOut()
+                                context.toast(MR.strings.cloud_account_sign_out_success)
+                            }
+                        },
+                    ) {
+                        Text(text = stringResource(MR.strings.logout))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showSignOutDialog = false }) {
+                        Text(text = stringResource(MR.strings.action_cancel))
+                    }
+                },
+            )
+        }
+
+        val currentAuthUser = authUser
+        val preferenceItems = if (currentAuthUser != null) {
+            val title = currentAuthUser.displayName?.takeIf { it.isNotBlank() }
+                ?: currentAuthUser.email?.takeIf { it.isNotBlank() }
+                ?: currentAuthUser.uid
+            val subtitle = currentAuthUser.email?.takeIf { it != title } ?: "Firebase UID: ${currentAuthUser.uid.take(8)}…"
+
+            listOf(
+                Preference.PreferenceItem.TextPreference(
+                    title = title,
+                    subtitle = subtitle,
+                    onClick = { navigator.push(eu.kanade.presentation.more.PaihonCloudScreen) },
+                ),
+            )
+        } else {
+            listOf(
+                Preference.PreferenceItem.TextPreference(
+                    title = stringResource(MR.strings.cloud_account_sign_in_google),
+                    subtitle = stringResource(MR.strings.cloud_account_sign_in_summary),
+                    onClick = { navigator.push(eu.kanade.presentation.more.PaihonCloudScreen) },
+                ),
+            )
+        }
+
+        return Preference.PreferenceGroup(
+            title = stringResource(MR.strings.label_cloud_account),
+            preferenceItems = preferenceItems,
         )
     }
 

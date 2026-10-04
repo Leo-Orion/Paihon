@@ -94,6 +94,9 @@ interface AppGraph : ViewModelGraph {
     val securityPreferences: SecurityPreferences
     val downloadPreferences: DownloadPreferences
 
+    val firebaseAuthManager: eu.kanade.tachiyomi.data.auth.FirebaseAuthManager
+    val cloudFirestoreRepository: eu.kanade.tachiyomi.data.cloud.repository.CloudFirestoreRepository
+
     val crashLogUtil: CrashLogUtil
 
     val downloadManager: DownloadManager
@@ -117,6 +120,7 @@ interface AppGraph : ViewModelGraph {
     val javaScriptEngine: JavaScriptEngine
 
     val getFavorites: GetFavorites
+    val getLibraryManga: tachiyomi.domain.manga.interactor.GetLibraryManga
     val getCategories: GetCategories
     val resetViewerFlags: ResetViewerFlags
     val resetCategoryFlags: ResetCategoryFlags

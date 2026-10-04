@@ -42,14 +42,23 @@ fun MoreScreen(
     onClickSettings: () -> Unit,
     onClickSupport: () -> Unit,
     onClickAbout: () -> Unit,
+    onClickCloud: () -> Unit,
+    userName: String?,
+    isSignedIn: Boolean,
+    avatarUri: String?,
+    onAvatarSelected: (android.net.Uri) -> Unit,
 ) {
     val uriHandler = LocalUriHandler.current
 
     Scaffold { contentPadding ->
         ScrollbarLazyColumn(contentPadding = contentPadding) {
             item {
-                LogoHeader(
-                    iconPadding = PaddingValues(vertical = 32.dp),
+                ProfileHeader(
+                    avatarUri = avatarUri,
+                    onAvatarSelected = onAvatarSelected,
+                    isSignedIn = isSignedIn,
+                    userName = userName,
+                    onHeaderClick = onClickCloud,
                 )
             }
             item {

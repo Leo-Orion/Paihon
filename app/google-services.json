@@ -1,45 +1,81 @@
 {
   "project_info": {
-    "project_number": "82031285239",
-    "project_id": "mihonapp",
-    "storage_bucket": "mihonapp.appspot.com"
+    "project_number": "755916784685",
+    "project_id": "paihon-cloud",
+    "storage_bucket": "paihon-cloud.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:82031285239:android:336ed6dceef55c357594f2",
+        "mobilesdk_app_id": "1:755916784685:android:7c1dcf924f36acdedf64a4",
         "android_client_info": {
           "package_name": "app.mihon"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "755916784685-9ngprvt491rubcvrq7t0nj62dsmsg1nb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.mihon",
+            "certificate_hash": "b0dd9f40ef7e20352b58bfd4d2c2a5dfe717c370"
+          }
+        },
+        {
+          "client_id": "755916784685-tpf33j0mkqdhevigffl0rq43ur831fcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTvOxBQnuXADx5isKxoynPG0nlAO8bQbk"
+          "current_key": "AIzaSyCxDkCNj-g1m5fhKWoJmHpmoWM59sx-6Rs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755916784685-tpf33j0mkqdhevigffl0rq43ur831fcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:82031285239:android:b7440cbdd0d33c9d7594f2",
+        "mobilesdk_app_id": "1:755916784685:android:f3d96eb7348f2da9df64a4",
         "android_client_info": {
-          "package_name": "app.mihon.debug"
+          "package_name": "app.mihon.dev"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "755916784685-ut6soqnjdu6q0r02emoim3bd75t0pflt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.mihon.dev",
+            "certificate_hash": "b0dd9f40ef7e20352b58bfd4d2c2a5dfe717c370"
+          }
+        },
+        {
+          "client_id": "755916784685-tpf33j0mkqdhevigffl0rq43ur831fcj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTvOxBQnuXADx5isKxoynPG0nlAO8bQbk"
+          "current_key": "AIzaSyCxDkCNj-g1m5fhKWoJmHpmoWM59sx-6Rs"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "755916784685-tpf33j0mkqdhevigffl0rq43ur831fcj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

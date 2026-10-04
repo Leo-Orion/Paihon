@@ -62,6 +62,8 @@ data object MoreTab : Tab {
         val navigator = LocalNavigator.currentOrThrow
         val viewModel = metroViewModel<MoreViewModel>()
         val downloadQueueState by viewModel.downloadQueueState.collectAsState()
+        val authUser by viewModel.authUser.collectAsState()
+
         MoreScreen(
             downloadQueueStateProvider = { downloadQueueState },
             downloadedOnly = viewModel.downloadedOnly,
@@ -75,6 +77,13 @@ data object MoreTab : Tab {
             onClickSettings = { navigator.push(SettingsScreen()) },
             onClickSupport = { navigator.push(SupportUsScreen()) },
             onClickAbout = { navigator.push(SettingsScreen(SettingsScreen.Destination.About)) },
+            onClickCloud = { navigator.push(eu.kanade.presentation.more.PaihonCloudScreen) },
+            userName = authUser?.displayName,
+            isSignedIn = authUser != null,
+            avatarUri = viewModel.avatarUri,
+            onAvatarSelected = { uri ->
+                viewModel.setAvatar(uri)
+            },
         )
     }
 }
@@ -84,11 +93,33 @@ data object MoreTab : Tab {
 @ContributesIntoMap(AppScope::class)
 class MoreViewModel(
     private val downloadManager: DownloadManager,
+    private val authManager: eu.kanade.tachiyomi.data.auth.FirebaseAuthManager,
     preferences: BasePreferences,
+    private val uiPreferences: eu.kanade.domain.ui.UiPreferences,
+    private val context: android.content.Context,
 ) : ViewModel() {
 
+    val authUser = authManager.authState
+
+    var avatarUri by uiPreferences.profileAvatarUri.asState(viewModelScope)
     var downloadedOnly by preferences.downloadedOnly.asState(viewModelScope)
     var incognitoMode by preferences.incognitoMode.asState(viewModelScope)
+
+    fun setAvatar(uri: android.net.Uri) {
+        try {
+            val avatarFile = java.io.File(context.filesDir, "custom_profile_avatar.png")
+            if (uri.scheme != "file" || uri.path != avatarFile.absolutePath) {
+                context.contentResolver.openInputStream(uri)?.use { input ->
+                    java.io.FileOutputStream(avatarFile).use { output ->
+                        input.copyTo(output)
+                    }
+                }
+            }
+            avatarUri = avatarFile.absolutePath
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 
     private var _downloadQueueState: MutableStateFlow<DownloadQueueState> = MutableStateFlow(DownloadQueueState.Stopped)
     val downloadQueueState: StateFlow<DownloadQueueState> = _downloadQueueState.asStateFlow()
