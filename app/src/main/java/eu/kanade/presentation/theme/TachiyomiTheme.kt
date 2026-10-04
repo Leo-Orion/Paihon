@@ -9,19 +9,23 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import eu.kanade.domain.ui.model.AppTheme
 import eu.kanade.presentation.theme.colorscheme.BaseColorScheme
-import eu.kanade.presentation.theme.colorscheme.CatppuccinColorScheme
+import eu.kanade.presentation.theme.colorscheme.CloudflareColorScheme
+import eu.kanade.presentation.theme.colorscheme.CottoncandyColorScheme
+import eu.kanade.presentation.theme.colorscheme.DoomColorScheme
 import eu.kanade.presentation.theme.colorscheme.GreenAppleColorScheme
 import eu.kanade.presentation.theme.colorscheme.LavenderColorScheme
+import eu.kanade.presentation.theme.colorscheme.MatrixColorScheme
 import eu.kanade.presentation.theme.colorscheme.MidnightDuskColorScheme
+import eu.kanade.presentation.theme.colorscheme.MochaColorScheme
 import eu.kanade.presentation.theme.colorscheme.MonetColorScheme
 import eu.kanade.presentation.theme.colorscheme.MonochromeColorScheme
 import eu.kanade.presentation.theme.colorscheme.NordColorScheme
+import eu.kanade.presentation.theme.colorscheme.SapphireColorScheme
 import eu.kanade.presentation.theme.colorscheme.StrawberryColorScheme
 import eu.kanade.presentation.theme.colorscheme.TachiyomiColorScheme
 import eu.kanade.presentation.theme.colorscheme.TakoColorScheme
 import eu.kanade.presentation.theme.colorscheme.TealTurqoiseColorScheme
 import eu.kanade.presentation.theme.colorscheme.TidalWaveColorScheme
-import eu.kanade.presentation.theme.colorscheme.TokyoNightColorScheme
 import eu.kanade.presentation.theme.colorscheme.YinYangColorScheme
 import eu.kanade.presentation.theme.colorscheme.YotsubaColorScheme
 import mihon.app.di.appGraph
@@ -89,12 +93,15 @@ private fun getThemeColorScheme(
 
 private val colorSchemes: Map<AppTheme, BaseColorScheme> = mapOf(
     AppTheme.DEFAULT to TachiyomiColorScheme,
-    AppTheme.CATPPUCCIN to CatppuccinColorScheme,
-    AppTheme.TOKYONIGHT to TokyoNightColorScheme,
+    AppTheme.CLOUDFLARE to CloudflareColorScheme,
+    AppTheme.COTTONCANDY to CottoncandyColorScheme,
+    AppTheme.DOOM to DoomColorScheme,
     AppTheme.GREEN_APPLE to GreenAppleColorScheme,
     AppTheme.LAVENDER to LavenderColorScheme,
+    AppTheme.MATRIX to MatrixColorScheme,
     AppTheme.MIDNIGHT_DUSK to MidnightDuskColorScheme,
-    AppTheme.MONOCHROME to MonochromeColorScheme,
+    AppTheme.MOCHA to MochaColorScheme,
+    AppTheme.SAPPHIRE to SapphireColorScheme,
     AppTheme.NORD to NordColorScheme,
     AppTheme.STRAWBERRY_DAIQUIRI to StrawberryColorScheme,
     AppTheme.TAKO to TakoColorScheme,
@@ -102,4 +109,5 @@ private val colorSchemes: Map<AppTheme, BaseColorScheme> = mapOf(
     AppTheme.TIDAL_WAVE to TidalWaveColorScheme,
     AppTheme.YINYANG to YinYangColorScheme,
     AppTheme.YOTSUBA to YotsubaColorScheme,
+    AppTheme.MONOCHROME to MonochromeColorScheme,
 )
